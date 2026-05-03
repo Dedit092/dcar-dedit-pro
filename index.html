@@ -3,105 +3,166 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KYRO | NEXA</title>
+<title>KYRO | NEXA - CYBER EDITION</title>
 
 <style>
-*{box-sizing:border-box}
+:root {
+  --neon-blue: #00f2ff;
+  --neon-pink: #ff00ff;
+  --neon-green: #39ff14;
+  --neon-red: #ff3131;
+}
+
+*{box-sizing:border-box; cursor: default;}
+
 body{
   margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0f0f0f;
-  color:#fff;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  background: #050505;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Hiệu ứng nền bụi bay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  z-index: -2;
 }
 
 .container{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
-  padding:24px;
+  padding:40px 20px;
   text-align:center;
 }
 
-h1{font-size:32px;margin-bottom:16px}
-
-.intro{
-  margin-bottom:20px;
-  padding:16px;
-  border-radius:14px;
-  background:#1a1a1a;
-  max-width:420px;
-  font-weight:bold;
+/* Chữ 3D phát sáng */
+h1 {
+  font-size: 38px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 
+    0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15),
+    0 0 20px var(--neon-blue);
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.rules{
-  color:#aaa;
-  margin-bottom:24px;
-  line-height:1.6;
-  max-width:420px;
+@keyframes glow {
+  from { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
+  to { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
 }
 
-.rule7{color:#ff4d4d;font-weight:bold}
-.rule8{color:#ffb84d;font-weight:bold}
-.rule4old{color:#ff4d4d;font-weight:bold}
-
-.life,.admin,.fun-note{
-  margin-top:12px;
-  padding:16px;
-  border-radius:14px;
-  max-width:420px;
-  font-weight:bold;
+/* Khung kính mờ có viền Neon chạy */
+.card-neon {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
 }
 
-.life{background:#141a2a;color:#9ecbff}
-.admin{background:#1a132a;color:#caa6ff}
-.fun-note{background:#2a1a00;color:#ffcc66}
-
-.btn{
-  display:block;
-  width:100%;
-  max-width:360px;
-  margin:10px 0;
-  padding:16px;
-  text-decoration:none;
-  border-radius:14px;
-  font-weight:bold;
-  color:#fff;
-  transition:.25s;
+.card-neon::before {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: conic-gradient(transparent, transparent, transparent, var(--neon-blue));
+  animation: rotate 4s linear infinite;
+  z-index: -1;
 }
 
-.btn:hover{transform:scale(1.05);filter:brightness(1.2)}
-
-.btn1{background:#3b5998}
-.btn2{background:#0084ff}
-.btn3{background:#808080}
-.btn4{background:#ff0050}
-.btn5{background:#00c853}
-.btn6{background:#ff7a00}
-.btn7{background:#8e24aa}
-
-.glow1{color:#ff4d4d;text-shadow:0 0 6px #ff4d4d}
-.glow2{color:#4da6ff;text-shadow:0 0 6px #4da6ff}
-
-.note{
-  margin-top:10px;
-  padding:14px;
-  border-radius:12px;
-  background:#1a0f0f;
-  color:#ffb3b3;
-  max-width:360px;
-  font-size:14px;
+.card-neon::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #0f0f0f;
+  border-radius: 16px;
+  z-index: -1;
 }
 
-.browser{
-  margin-top:12px;
-  padding:14px;
-  border-radius:12px;
-  background:#1c1c1c;
-  color:#ccc;
-  font-size:14px;
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
 }
+
+.intro {
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.rules { color: #eee; line-height: 1.8; text-align: left; }
+.rule-highlight { color: var(--neon-red); font-weight: bold; text-shadow: 0 0 5px var(--neon-red); }
+.rule-special { color: #ffb84d; font-weight: bold; }
+
+/* Nút bấm hiệu ứng nháy Neon */
+.btn {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: 15px 0;
+  padding: 18px;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.4s;
+  position: relative;
+  border: none;
+  background: #111;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 0 20px var(--neon-blue);
+}
+
+.btn-fb { border: 2px solid #3b5998; color: #3b5998; }
+.btn-fb:hover { background: #3b5998; color: #fff; }
+
+.btn-zalo { border: 2px solid #0084ff; color: #0084ff; }
+.btn-zalo:hover { background: #0084ff; color: #fff; }
+
+.btn-join { border: 2px solid var(--neon-green); color: var(--neon-green); }
+.btn-join:hover { background: var(--neon-green); color: #000; }
+
+.btn-tiktok { border: 2px solid #ff0050; color: #ff0050; }
+.btn-tiktok:hover { background: #ff0050; color: #fff; }
+
+.glow-name {
+  font-weight: 900;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.minh-dang { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
+.kenz-edit { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+
+.browser-note {
+  margin-top: 30px;
+  font-size: 12px;
+  color: #555;
+  font-style: italic;
+}
+
 </style>
 </head>
 
@@ -109,99 +170,42 @@ h1{font-size:32px;margin-bottom:16px}
 
 <div class="container">
 
-<div class="intro">
-Đây là nhóm trò chuyện vui vẻ 👽
+<div class="intro">👽 D GAMING PROJECT 👽</div>
+
+<h1>KYRO | NEXA</h1>
+
+<div class="card-neon">
+  <div class="rules">
+    <h3 style="color:var(--neon-blue); text-align:center; margin-bottom:15px;">📜 LUẬT NHÓM</h3>
+    • Luật 1: Cấm chửi tục gắt. Cà khịa nhẹ thì OK 😏<br>
+    • Luật 2: Cấm spam bẩn.<br>
+    • Luật 3: Cấm xúc phạm thành viên.<br>
+    <span style="color:#666; font-style:italic;">• Luật 4: (Hết hiệu lực - Ưu tiên mem tích cực)</span><br>
+    • Luật 5: Cấm gửi link 18+.<br>
+    • Luật 6: Không tự ý đổi tên nhóm.<br>
+    <span class="rule-highlight">• Luật 7: Cấm kéo mem sang nhóm khác.</span><br>
+    <span class="rule-special">• Luật 8: Phải Follow kênh D mới được vào.</span>
+  </div>
 </div>
 
-<h1>Luật Nhóm KYRO | NEXA</h1>
-
-<div class="rules">
-• Luật 1: Cấm chửi tục (có thể cà khịa nhẹ 😏)<br>
-• Luật 2: Cấm spam<br>
-• Luật 3: Cấm xúc phạm<br>
-
-<span class="rule4old">
-• Luật 4: (không còn hiệu lực)<br>
-👉 Nhóm đông sẽ kick người ít nhắn
-</span><br>
-
-• Luật 5: Cấm nội dung bậy<br>
-• Luật 6: Không tự đổi tên nhóm<br>
-
-<span class="rule7">
-• Luật 7: Cấm gửi link nhóm khác
-</span><br>
-
-<span class="rule8">
-• Luật 8: Phải follow kênh D mới được vào
-</span>
+<div class="card-neon" style="max-width:350px;">
+  <h3 style="color:var(--neon-pink); margin-bottom:10px;">🛡️ QUẢN TRỊ VIÊN</h3>
+  <a class="glow-name minh-dang" href="https://www.tiktok.com/@mahiru_layzer290" target="_blank">『XIVI』 Minh Dang</a><br><br>
+  <a class="glow-name kenz-edit" href="https://www.tiktok.com/@vessla.223" target="_blank">KenZ EDIT</a>
 </div>
 
-<div class="life">
-❤️‍🔥 HỆ THỐNG 3 MẠNG<br>
-Hết mạng = KICK 😈
+<div style="color:var(--neon-green); font-weight:bold; margin:20px 0;">
+  ❤️‍🔥 HỆ THỐNG 3 MẠNG - HẾT LÀ KICK 😈
 </div>
 
-<div class="admin">
-🛡️ QUẢN TRỊ VIÊN<br><br>
+<a class="btn btn-fb" href="https://www.facebook.com/dbt.gaming.2025" target="_blank">🔥 Facebook Cá Nhân</a>
+<a class="btn btn-zalo" href="https://zalo.me/0927791127" target="_blank">💙 Zalo Cá Nhân</a>
+<a class="btn btn-join" href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank">🕷️ Vào Nhóm KYRO | NEXA V1</a>
+<a class="btn btn-tiktok" href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank">🎬 Thông Tin Nhóm</a>
+<a class="btn btn-tiktok" style="border-color:#ff7a00; color:#ff7a00;" href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank">🎨 Aura D Edit</a>
 
-<a class="glow1" href="https://www.tiktok.com/@mahiru_layzer290?_r=1&_t=ZS-95uzFvj3ocp" target="_blank">
-QTRV 1. 『XIVI』 Minh Dang
-</a><br>
-
-<a class="glow2" href="https://www.tiktok.com/@vessla.223?_r=1&_t=ZS-95uzH5PcGgc" target="_blank">
-QTRV 2. KenZ EDIT
-</a>
-
-</div>
-
-<div class="fun-note">
-🤡 Nhóm cần người nói chuyện vui<br>
-Nhắn nhạt = tới công chuyện 😈
-</div>
-
-<div class="note">
-⚠️ Chụp bằng chứng khi có người vi phạm<br>
-👉 QTRV phải hỏi chủ nhóm trước khi xử lý<br><br>
-
-⏳ Bị kick có 3 ngày quay lại<br>
-❤️ Mất tim có 3 ngày hồi
-</div>
-
-<div style="margin-top:10px;color:#aaa;font-size:14px">
-👉 Những nút dưới có thể bấm được
-</div>
-
-<a class="btn btn1" href="https://www.facebook.com/dbt.gaming.2025" target="_blank">
-🔥 Facebook
-</a>
-
-<a class="btn btn2" href="https://zalo.me/0927791127" target="_blank">
-💙 Zalo
-</a>
-
-<a class="btn btn3" href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank">
-🕷️ Vào Nhóm
-</a>
-
-<a class="btn btn4" href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank">
-🎬 Video Info
-</a>
-
-<a class="btn btn5" href="https://snaptik.net" target="_blank">
-⬇️ Tải Video
-</a>
-
-<a class="btn btn6" href="https://vt.tiktok.com/ZSHMNVCwh/" target="_blank">
-🎥 Video Chi Tiết
-</a>
-
-<a class="btn btn7" href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank">
-🎬 Aura D Edit
-</a>
-
-<div class="browser">
-👉 Nhớ mở bằng trình duyệt để dùng đầy đủ
+<div class="browser-note">
+  © 2026 D Gaming Project • Mở trình duyệt để trải nghiệm tốt nhất
 </div>
 
 </div>
