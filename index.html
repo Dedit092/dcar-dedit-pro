@@ -1,214 +1,241 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KYRO | NEXA - CYBER EDITION</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D GAMING | SPACE EDITION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-glow: #7000ff;
+            --secondary-glow: #00d2ff;
+            --accent-pink: #ff00c8;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
 
-<style>
-:root {
-  --neon-blue: #00f2ff;
-  --neon-pink: #ff00ff;
-  --neon-green: #39ff14;
-  --neon-red: #ff3131;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            cursor: default;
+        }
 
-*{box-sizing:border-box; cursor: default;}
+        body {
+            background: #020205;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
 
-body{
-  margin:0;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background: #050505;
-  color: #fff;
-  overflow-x: hidden;
-}
+        /* Hiệu ứng nền vũ trụ lấp lánh */
+        .space-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #111b27 0%, #050508 100%);
+            z-index: -2;
+        }
 
-/* Hiệu ứng nền bụi bay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(circle at center, #111 0%, #000 100%);
-  z-index: -2;
-}
+        .stars {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+            z-index: -1;
+            animation: moveStars 150s linear infinite;
+            opacity: 0.5;
+        }
 
-.container{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:40px 20px;
-  text-align:center;
-}
+        @keyframes moveStars {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
 
-/* Chữ 3D phát sáng */
-h1 {
-  font-size: 38px;
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  font-weight: 900;
-  color: #fff;
-  text-shadow: 
-    0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
-    0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15),
-    0 0 20px var(--neon-blue);
-  animation: glow 2s ease-in-out infinite alternate;
-}
+        .container {
+            width: 100%;
+            max-width: 450px;
+            padding: 40px 20px;
+            text-align: center;
+            z-index: 1;
+        }
 
-@keyframes glow {
-  from { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue); }
-  to { text-shadow: 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink); }
-}
+        .top-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: var(--secondary-glow);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+            padding: 5px 15px;
+            border: 1px solid var(--secondary-glow);
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+        }
 
-/* Khung kính mờ có viền Neon chạy */
-.card-neon {
-  position: relative;
-  width: 100%;
-  max-width: 450px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 25px;
-  margin-bottom: 25px;
-  border: 1px solid rgba(255,255,255,0.1);
-  overflow: hidden;
-}
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #fff 30%, var(--primary-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px var(--primary-glow));
+        }
 
-.card-neon::before {
-  content: "";
-  position: absolute;
-  top: -50%; left: -50%; width: 200%; height: 200%;
-  background: conic-gradient(transparent, transparent, transparent, var(--neon-blue));
-  animation: rotate 4s linear infinite;
-  z-index: -1;
-}
+        /* Card kiểu kính phi thuyền */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
 
-.card-neon::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  background: #0f0f0f;
-  border-radius: 16px;
-  z-index: -1;
-}
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s;
+        }
 
-@keyframes rotate {
-  100% { transform: rotate(360deg); }
-}
+        .glass-card:hover::before {
+            left: 100%;
+        }
 
-.intro {
-  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
+        .rules-title {
+            color: var(--accent-pink);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--accent-pink);
+        }
 
-.rules { color: #eee; line-height: 1.8; text-align: left; }
-.rule-highlight { color: var(--neon-red); font-weight: bold; text-shadow: 0 0 5px var(--neon-red); }
-.rule-special { color: #ffb84d; font-weight: bold; }
+        .rules-list {
+            text-align: left;
+            font-size: 13px;
+            line-height: 1.8;
+            color: #ccc;
+        }
 
-/* Nút bấm hiệu ứng nháy Neon */
-.btn {
-  display: block;
-  width: 100%;
-  max-width: 380px;
-  margin: 15px 0;
-  padding: 18px;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: 0.4s;
-  position: relative;
-  border: none;
-  background: #111;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+        .rules-list b { color: #fff; }
 
-.btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 0 20px var(--neon-blue);
-}
+        /* Nút bấm kiểu Hologram */
+        .btn-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px;
+            margin: 12px 0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
 
-.btn-fb { border: 2px solid #3b5998; color: #3b5998; }
-.btn-fb:hover { background: #3b5998; color: #fff; }
+        .btn-link:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--secondary-glow);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
 
-.btn-zalo { border: 2px solid #0084ff; color: #0084ff; }
-.btn-zalo:hover { background: #0084ff; color: #fff; }
+        .btn-link::after {
+            content: ' »';
+            opacity: 0;
+            transition: 0.3s;
+        }
 
-.btn-join { border: 2px solid var(--neon-green); color: var(--neon-green); }
-.btn-join:hover { background: var(--neon-green); color: #000; }
+        .btn-link:hover::after {
+            opacity: 1;
+            margin-left: 10px;
+        }
 
-.btn-tiktok { border: 2px solid #ff0050; color: #ff0050; }
-.btn-tiktok:hover { background: #ff0050; color: #fff; }
+        /* Màu riêng cho từng hệ máy */
+        .fb { border-left: 4px solid #3b5998; }
+        .zalo { border-left: 4px solid #0084ff; }
+        .tiktok { border-left: 4px solid #ff0050; }
+        .group { border-left: 4px solid #39ff14; color: #39ff14; }
 
-.glow-name {
-  font-weight: 900;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.minh-dang { color: var(--neon-red); text-shadow: 0 0 10px var(--neon-red); }
-.kenz-edit { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+        .admin-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
 
-.browser-note {
-  margin-top: 30px;
-  font-size: 12px;
-  color: #555;
-  font-style: italic;
-}
+        .admin-link {
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
 
-</style>
+        .footer {
+            margin-top: 40px;
+            font-size: 10px;
+            color: #555;
+            letter-spacing: 2px;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
+    <div class="space-bg"></div>
+    <div class="stars"></div>
 
-<div class="intro">👽 D GAMING PROJECT 👽</div>
+    <div class="container">
+        <div class="top-tag">Mission Control</div>
+        <h1>KYRO | NEXA</h1>
 
-<h1>KYRO | NEXA</h1>
+        <div class="glass-card">
+            <div class="rules-title">SYSTEM PROTOCOLS</div>
+            <div class="rules-list">
+                🚀 <b>01.</b> Cấm chửi tục gắt (Cà khịa nhẹ OK)<br>
+                🚀 <b>02.</b> Cấm spam - Cấm xúc phạm mem<br>
+                🚀 <b>03.</b> Tuyệt đối không gửi link 18+<br>
+                🚀 <b>04.</b> Phải Follow kênh <b>D Gaming</b> mới được vào
+            </div>
+        </div>
 
-<div class="card-neon">
-  <div class="rules">
-    <h3 style="color:var(--neon-blue); text-align:center; margin-bottom:15px;">📜 LUẬT NHÓM</h3>
-    • Luật 1: Cấm chửi tục gắt. Cà khịa nhẹ thì OK 😏<br>
-    • Luật 2: Cấm spam bẩn.<br>
-    • Luật 3: Cấm xúc phạm thành viên.<br>
-    <span style="color:#666; font-style:italic;">• Luật 4: (Hết hiệu lực - Ưu tiên mem tích cực)</span><br>
-    • Luật 5: Cấm gửi link 18+.<br>
-    • Luật 6: Không tự ý đổi tên nhóm.<br>
-    <span class="rule-highlight">• Luật 7: Cấm kéo mem sang nhóm khác.</span><br>
-    <span class="rule-special">• Luật 8: Phải Follow kênh D mới được vào.</span>
-  </div>
-</div>
+        <div class="glass-card" style="border-color: var(--primary-glow);">
+            <div class="rules-title" style="color: var(--secondary-glow); text-shadow: 0 0 10px var(--secondary-glow);">COMMANDERS</div>
+            <div class="admin-box">
+                <a href="https://www.tiktok.com/@mahiru_layzer290" class="admin-link" style="color: #ff3131;">MINH DANG</a>
+                <a href="https://www.tiktok.com/@vessla.223" class="admin-link" style="color: var(--secondary-glow);">KENZ EDIT</a>
+            </div>
+        </div>
 
-<div class="card-neon" style="max-width:350px;">
-  <h3 style="color:var(--neon-pink); margin-bottom:10px;">🛡️ QUẢN TRỊ VIÊN</h3>
-  <a class="glow-name minh-dang" href="https://www.tiktok.com/@mahiru_layzer290" target="_blank">『XIVI』 Minh Dang</a><br><br>
-  <a class="glow-name kenz-edit" href="https://www.tiktok.com/@vessla.223" target="_blank">KenZ EDIT</a>
-</div>
+        <a href="https://www.facebook.com/dbt.gaming.2025" class="btn-link fb">☄️ Facebook Cá Nhân</a>
+        <a href="https://zalo.me/0927791127" class="btn-link zalo">☄️ Zalo Cá Nhân</a>
+        <a href="https://tiktok.me/group/ZSPVTx7ce/" class="btn-link group">🛸 Vào Nhóm KYRO | NEXA</a>
+        <a href="https://vt.tiktok.com/ZSuqBXax8/" class="btn-link tiktok">🎬 Thông Tin Nhóm</a>
+        <a href="https://vt.tiktok.com/ZSHHCQX2R/" class="btn-link tiktok" style="border-left-color: #ff8c00;">✨ Aura D Edit</a>
 
-<div style="color:var(--neon-green); font-weight:bold; margin:20px 0;">
-  ❤️‍🔥 HỆ THỐNG 3 MẠNG - HẾT LÀ KICK 😈
-</div>
-
-<a class="btn btn-fb" href="https://www.facebook.com/dbt.gaming.2025" target="_blank">🔥 Facebook Cá Nhân</a>
-<a class="btn btn-zalo" href="https://zalo.me/0927791127" target="_blank">💙 Zalo Cá Nhân</a>
-<a class="btn btn-join" href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank">🕷️ Vào Nhóm KYRO | NEXA V1</a>
-<a class="btn btn-tiktok" href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank">🎬 Thông Tin Nhóm</a>
-<a class="btn btn-tiktok" style="border-color:#ff7a00; color:#ff7a00;" href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank">🎨 Aura D Edit</a>
-
-<div class="browser-note">
-  © 2026 D Gaming Project • Mở trình duyệt để trải nghiệm tốt nhất
-</div>
-
-</div>
+        <div class="footer">
+            D GAMING PROJECT © 2026<br>
+            ESTABLISHING CONNECTION... SUCCESS
+        </div>
+    </div>
 
 </body>
 </html>
