@@ -3,237 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D GAMING | SPACE EDITION</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>KYRO | NEXA - PREMIUM DASHBOARD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-glow: #7000ff;
-            --secondary-glow: #00d2ff;
-            --accent-pink: #ff00c8;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg-dark: #050508;
+            --accent-blue: #00f2ff;
+            --accent-pink: #ff007f;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border-glass: rgba(255, 255, 255, 0.1);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            cursor: default;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background: #020205;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 127, 0.05) 0%, transparent 40%);
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Hiệu ứng nền vũ trụ lấp lánh */
-        .space-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #111b27 0%, #050508 100%);
-            z-index: -2;
-        }
-
-        .stars {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-            z-index: -1;
-            animation: moveStars 150s linear infinite;
-            opacity: 0.5;
-        }
-
-        @keyframes moveStars {
-            from { background-position: 0 0; }
-            to { background-position: 1000px 1000px; }
         }
 
         .container {
             width: 100%;
-            max-width: 450px;
+            max-width: 480px;
+            margin: 0 auto;
             padding: 40px 20px;
-            text-align: center;
-            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .top-tag {
-            font-family: 'Orbitron', sans-serif;
+        /* Hiệu ứng Header 3D động */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .status-badge {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-pink));
+            padding: 4px 15px;
+            border-radius: 20px;
             font-size: 10px;
-            letter-spacing: 3px;
-            color: var(--secondary-glow);
+            font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
             display: inline-block;
-            padding: 5px 15px;
-            border: 1px solid var(--secondary-glow);
-            border-radius: 50px;
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
         }
 
         h1 {
-            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
             font-weight: 900;
-            font-size: 32px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            background: linear-gradient(to bottom, #fff 30%, var(--primary-glow));
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #fff 0%, #888 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px var(--primary-glow));
-        }
-
-        /* Card kiểu kính phi thuyền */
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
-        }
-
-        .glass-card:hover::before {
-            left: 100%;
-        }
-
-        .rules-title {
-            color: var(--accent-pink);
-            font-family: 'Orbitron', sans-serif;
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px var(--accent-pink);
-        }
-
-        .rules-list {
-            text-align: left;
-            font-size: 13px;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .rules-list b { color: #fff; }
-
-        /* Nút bấm kiểu Hologram */
-        .btn-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 16px;
-            margin: 12px 0;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 13px;
             text-transform: uppercase;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Card thiết kế hiện đại */
+        .glass-card {
+            width: 100%;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             position: relative;
-        }
-
-        .btn-link:hover {
-            transform: scale(1.03);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--secondary-glow);
-            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
-        }
-
-        .btn-link::after {
-            content: ' »';
-            opacity: 0;
             transition: 0.3s;
         }
 
-        .btn-link:hover::after {
-            opacity: 1;
-            margin-left: 10px;
+        .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
         }
 
-        /* Màu riêng cho từng hệ máy */
-        .fb { border-left: 4px solid #3b5998; }
-        .zalo { border-left: 4px solid #0084ff; }
-        .tiktok { border-left: 4px solid #ff0050; }
-        .group { border-left: 4px solid #39ff14; color: #39ff14; }
-
-        .admin-box {
+        h2 {
+            font-size: 14px;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
+            align-items: center;
+            gap: 10px;
         }
+
+        .rules-list {
+            list-style: none;
+            font-size: 14px;
+            color: #ccc;
+            text-align: left;
+        }
+
+        .rules-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .rules-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Nút bấm Premium Gradient */
+        .btn-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            position: relative;
+            padding: 18px;
+            border-radius: 18px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Hiệu ứng màu riêng biệt cho từng nút */
+        .btn-fb:hover { background: #3b5998; box-shadow: 0 10px 20px rgba(59, 89, 152, 0.3); }
+        .btn-zalo:hover { background: #0084ff; box-shadow: 0 10px 20px rgba(0, 132, 255, 0.3); }
+        .btn-join:hover { background: #00c853; box-shadow: 0 10px 20px rgba(0, 200, 83, 0.3); }
+        .btn-tiktok:hover { background: #ff0050; box-shadow: 0 10px 20px rgba(255, 0, 80, 0.3); }
+        .btn-aura:hover { background: #8e24aa; box-shadow: 0 10px 20px rgba(142, 36, 170, 0.3); }
 
         .admin-link {
             text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
+            font-weight: 900;
             padding: 5px 10px;
-            border-radius: 5px;
+            border-radius: 8px;
+            transition: 0.3s;
         }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 10px;
+        .footer-note {
+            font-size: 11px;
             color: #555;
-            letter-spacing: 2px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.8; transform: scale(1); }
+        }
+
+        /* Hiệu ứng sáng bóng chạy qua nút */
+        .btn::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .btn:hover::after {
+            left: 120%;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="space-bg"></div>
-    <div class="stars"></div>
-
     <div class="container">
-        <div class="top-tag">Mission Control</div>
-        <h1>KYRO | NEXA</h1>
+        <header>
+            <div class="status-badge">Live Connection</div>
+            <h1>KYRO | NEXA</h1>
+        </header>
 
         <div class="glass-card">
-            <div class="rules-title">SYSTEM PROTOCOLS</div>
-            <div class="rules-list">
-                🚀 <b>01.</b> Cấm chửi tục gắt (Cà khịa nhẹ OK)<br>
-                🚀 <b>02.</b> Cấm spam - Cấm xúc phạm mem<br>
-                🚀 <b>03.</b> Tuyệt đối không gửi link 18+<br>
-                🚀 <b>04.</b> Phải Follow kênh <b>D Gaming</b> mới được vào
+            <h2>📜 Group Protocols</h2>
+            <ul class="rules-list">
+                <li>Cấm chửi tục (Cà khịa nhẹ 😏)</li>
+                <li>Cấm spam & xúc phạm thành viên</li>
+                <li>Cấm nội dung nhạy cảm 18+</li>
+                <li style="color: var(--accent-pink); font-weight: bold;">Phải follow kênh D để truy cập</li>
+            </ul>
+        </div>
+
+        <div class="glass-card" style="text-align: center;">
+            <div style="color: #ff4d4d; font-weight: 900; margin-bottom: 10px;">❤️‍🔥 HỆ THỐNG 3 MẠNG</div>
+            <p style="font-size: 12px; color: #888;">Hết mạng = KICK không báo trước 😈</p>
+        </div>
+
+        <div class="glass-card">
+            <h2>🛡️ Moderators</h2>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <a href="https://www.tiktok.com/@mahiru_layzer290" class="admin-link" style="color: #ff4d4d; border: 1px solid rgba(255,77,77,0.2);">『XIVI』 Minh Dang</a>
+                <a href="https://www.tiktok.com/@vessla.223" class="admin-link" style="color: var(--accent-blue); border: 1px solid rgba(0,242,255,0.2);">KenZ EDIT</a>
             </div>
         </div>
 
-        <div class="glass-card" style="border-color: var(--primary-glow);">
-            <div class="rules-title" style="color: var(--secondary-glow); text-shadow: 0 0 10px var(--secondary-glow);">COMMANDERS</div>
-            <div class="admin-box">
-                <a href="https://www.tiktok.com/@mahiru_layzer290" class="admin-link" style="color: #ff3131;">MINH DANG</a>
-                <a href="https://www.tiktok.com/@vessla.223" class="admin-link" style="color: var(--secondary-glow);">KENZ EDIT</a>
-            </div>
+        <div class="btn-grid">
+            <a href="https://www.facebook.com/dbt.gaming.2025" class="btn btn-fb">🔥 Facebook</a>
+            <a href="https://zalo.me/0927791127" class="btn btn-zalo">💙 Zalo Cá Nhân</a>
+            <a href="https://tiktok.me/group/ZSPVTx7ce/" class="btn btn-join">🕷️ Join Group V1</a>
+            <a href="https://vt.tiktok.com/ZSuqBXax8/" class="btn btn-tiktok">🎬 Video Info</a>
+            <a href="https://vt.tiktok.com/ZSHHCQX2R/" class="btn btn-aura">🎬 Aura D Edit</a>
         </div>
 
-        <a href="https://www.facebook.com/dbt.gaming.2025" class="btn-link fb">☄️ Facebook Cá Nhân</a>
-        <a href="https://zalo.me/0927791127" class="btn-link zalo">☄️ Zalo Cá Nhân</a>
-        <a href="https://tiktok.me/group/ZSPVTx7ce/" class="btn-link group">🛸 Vào Nhóm KYRO | NEXA</a>
-        <a href="https://vt.tiktok.com/ZSuqBXax8/" class="btn-link tiktok">🎬 Thông Tin Nhóm</a>
-        <a href="https://vt.tiktok.com/ZSHHCQX2R/" class="btn-link tiktok" style="border-left-color: #ff8c00;">✨ Aura D Edit</a>
-
-        <div class="footer">
-            D GAMING PROJECT © 2026<br>
-            ESTABLISHING CONNECTION... SUCCESS
+        <div class="footer-note">
+            © 2026 D Gaming • Optimized for Mobile Browsers
         </div>
     </div>
 
