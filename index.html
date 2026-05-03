@@ -3,201 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KYRO | NEXA - ADMIN CONTROL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <title>KYRO | NEXA - COMMAND CENTER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00f2ff;
-            --danger: #ff4d4d;
-            --warning: #ffb84d;
+            --cyan: #00f2ff;
+            --red: #ff3131;
+            --orange: #ff8c00;
+            --dark: #08080a;
             --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         
         body {
-            background: #050508;
+            background: var(--dark);
             color: #fff;
             font-family: 'Inter', sans-serif;
             background-image: 
-                radial-gradient(circle at top right, rgba(0, 242, 255, 0.1), transparent 40%),
-                radial-gradient(circle at bottom left, rgba(255, 77, 77, 0.1), transparent 40%);
-            background-attachment: fixed;
+                linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
             display: flex; justify-content: center;
         }
 
-        .container {
-            width: 100%; max-width: 480px;
-            padding: 30px 15px; z-index: 1;
-        }
+        .container { width: 100%; max-width: 480px; padding: 30px 15px; }
 
-        /* Top Bar */
-        .intro-header {
-            text-align: center; margin-bottom: 35px;
-        }
+        /* Header & Stats */
+        header { text-align: center; margin-bottom: 30px; }
+        .logo { font-family: 'Oswald', sans-serif; font-size: 35px; letter-spacing: 2px; color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
         
-        .badge-live {
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--primary);
-            padding: 6px 15px; border-radius: 50px;
-            font-size: 11px; font-weight: bold; border: 1px solid var(--primary);
-            display: inline-block; margin-bottom: 15px;
-            animation: blink 2s infinite;
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;
         }
-
-        h1 {
-            font-family: 'Orbitron', sans-serif; font-size: 28px;
-            text-transform: uppercase; letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        .stat-box {
+            background: var(--glass); border: 1px solid var(--cyan); border-radius: 12px; padding: 10px;
         }
+        .stat-num { display: block; font-size: 18px; font-weight: 900; color: var(--cyan); }
+        .stat-label { font-size: 10px; text-transform: uppercase; opacity: 0.7; }
 
-        /* Card Style */
+        /* Card System */
         .card {
-            background: var(--glass);
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--border); border-radius: 20px;
-            padding: 20px; margin-bottom: 15px;
-            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 20px; margin-bottom: 15px;
         }
+        .card-h { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,242,255,0.2); padding-bottom: 5px; }
 
-        .card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-3px); }
+        /* Nội dung chi tiết */
+        .list-item { font-size: 14px; margin-bottom: 10px; line-height: 1.6; color: #ddd; display: flex; gap: 8px; }
+        .list-item b { color: var(--cyan); }
 
-        .card-title {
-            font-family: 'Orbitron', sans-serif; font-size: 13px;
-            color: var(--primary); margin-bottom: 15px;
-            display: flex; align-items: center; gap: 10px;
+        /* Life System */
+        .life-wrap { background: rgba(255, 49, 49, 0.1); border: 1px solid var(--red); border-radius: 15px; padding: 15px; text-align: center; }
+        .heart-icons { font-size: 24px; margin: 5px 0; letter-spacing: 5px; }
+
+        /* Admin & Penalty */
+        .admin-link {
+            display: block; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px;
+            text-decoration: none; color: #fff; font-weight: bold; font-size: 14px; margin-bottom: 10px; border-left: 4px solid var(--cyan);
         }
+        .penalty-box { font-size: 13px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-top: 10px; border: 1px dashed #444; }
 
-        /* Luật Nhóm */
-        .rule-item {
-            font-size: 14px; margin-bottom: 12px;
-            line-height: 1.5; color: #ddd;
-        }
-        .rule-item b { color: #fff; }
-        .rule-highlight { color: var(--warning); font-weight: bold; }
+        /* Blacklist Alert */
+        .blacklist { background: rgba(255, 49, 49, 0.2); border: 1px solid var(--red); color: #ffbaba; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: bold; text-align: center; animation: pulse 2s infinite; }
 
-        /* Hệ thống 3 mạng */
-        .life-system {
-            display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(90deg, rgba(255,77,77,0.1), transparent);
-            padding: 15px; border-radius: 12px; border-left: 4px solid var(--danger);
-        }
-
-        /* Admin Link */
-        .admin-box {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-        }
-        .admin-btn {
-            background: rgba(255,255,255,0.05);
-            padding: 12px; border-radius: 12px; text-decoration: none;
-            text-align: center; font-size: 12px; font-weight: bold;
-            border: 1px solid var(--border); color: #fff;
-        }
-
-        /* Grid Buttons */
-        .btn-list { display: flex; flex-direction: column; gap: 10px; margin-top: 25px; }
-
+        /* Buttons List */
         .btn {
-            width: 100%; padding: 18px; border-radius: 15px;
-            text-decoration: none; color: #fff; font-weight: bold;
-            font-size: 15px; display: flex; align-items: center;
-            justify-content: center; gap: 12px;
-            transition: 0.3s; border: 1px solid var(--border);
-            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 18px; border-radius: 15px; margin-bottom: 12px;
+            text-decoration: none; color: #fff; font-weight: 800; font-size: 15px;
+            transition: 0.3s; border: 1px solid rgba(255,255,255,0.1);
         }
+        .btn-main { background: var(--cyan); color: #000; box-shadow: 0 0 20px rgba(0,242,255,0.3); }
+        .btn-social { background: rgba(255,255,255,0.05); }
+        .btn:active { transform: scale(0.95); }
 
-        .btn:active { transform: scale(0.96); }
-
-        .btn-fb { background: #3b5998; }
-        .btn-zalo { background: #0084ff; }
-        .btn-group { background: #111; border: 1px solid var(--primary); box-shadow: 0 0 15px rgba(0,242,255,0.2); }
-        .btn-video { background: #ff0050; }
-        .btn-tool { background: #00c853; }
-        .btn-aura { background: #8e24aa; }
-
-        /* Footer */
-        .footer-note {
-            text-align: center; font-size: 11px; color: #555;
-            margin-top: 30px; line-height: 1.8;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .special-note {
-            background: rgba(255, 184, 77, 0.1);
-            border-radius: 10px; padding: 10px; margin-top: 10px;
-            font-size: 12px; border-left: 3px solid var(--warning);
-        }
+        @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; } 100% { opacity: 0.8; } }
+        .no-exeption { color: var(--red); font-weight: 900; text-align: center; border: 2px solid var(--red); padding: 10px; border-radius: 10px; margin: 20px 0; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="intro-header">
-        <div class="badge-live">SYSTEM: CONNECTED</div>
-        <h1>KYRO | NEXA</h1>
-        <p style="font-size: 13px; color: #888; margin-top: 10px;">Đây là nhóm trò chuyện vui vẻ 👽</p>
+    <header>
+        <div class="logo">KYRO | NEXA</div>
+        <p style="font-size: 12px; color: #aaa;">HỆ THỐNG QUẢN LÝ NHÓM CHIẾN BINH 👽</p>
+        
+        <div class="stats-grid">
+            <div class="stat-box"><span class="stat-num">20</span><span class="stat-label">Thành viên</span></div>
+            <div class="stat-box"><span class="stat-num">02</span><span class="stat-label">QTRV</span></div>
+            <div class="stat-box" style="border-color: var(--orange);"><span class="stat-num" style="color:var(--orange)">01</span><span class="stat-label">Chủ nhóm</span></div>
+        </div>
+    </header>
+
+    <div class="blacklist">❌ 28 ĐỐI TƯỢNG BỊ TỪ CHỐI DUYỆT (VI PHẠM LUẬT 8)</div>
+
+    <div class="card" style="margin-top: 20px;">
+        <div class="card-h">📜 NỘI QUY TỐI THƯỢNG</div>
+        <div class="list-item"><span>01.</span> <span>Cấm chửi tục (Cà khịa nhẹ 😏 OK, gắt là xử)</span></div>
+        <div class="list-item"><span>02.</span> <span>Cấm spam ảnh, video, GIF, tin nhắn</span></div>
+        <div class="list-item"><span>03.</span> <span>Cấm xúc phạm, công kích thành viên</span></div>
+        <div class="list-item" style="opacity: 0.5; text-decoration: line-through;"><span>04.</span> <span>Kick người ít nhắn tin khi nhóm đông</span></div>
+        <div class="list-item"><span>05.</span> <span>Cấm link bậy bạ, nội dung không phù hợp</span></div>
+        <div class="list-item"><span>06.</span> <span>Không tự ý đổi tên nhóm</span></div>
+        <div class="list-item"><span>07.</span> <span>Cấm gửi link nhóm khác (Rủ thì nhắn riêng)</span></div>
+        <div class="list-item" style="color: var(--orange);"><span>08.</span> <b>BẮT BUỘC FOLLOW KÊNH D MỚI ĐƯỢC VÀO</b></div>
     </div>
+
+    <div class="life-wrap">
+        <div style="font-weight: 900; font-size: 14px;">HỆ THỐNG SINH TỒN</div>
+        <div class="heart-icons">❤️❤️❤️</div>
+        <div style="font-size: 12px;">1 Vi phạm = Mất 1 mạng. Hết mạng = KICK 😈</div>
+        <div style="font-size: 11px; margin-top: 8px; color: #ffbaba;">⏳ 3 ngày để hồi mạng | 3 ngày để quay lại sau khi bị kick</div>
+    </div>
+
+    <div class="card" style="margin-top: 20px;">
+        <div class="card-h">🛡️ BAN QUẢN TRỊ & XỬ PHẠT</div>
+        
+        <a href="https://www.tiktok.com/@mahiru_layzer290" target="_blank" class="admin-link">QTRV 1: 『XIVI』 Minh Dang</a>
+        <div class="penalty-box">
+            • Kick: Đợi 10 ngày mới được vào<br>
+            • Vi phạm 5 lần: Ban vĩnh viễn 💀
+        </div>
+
+        <a href="https://www.tiktok.com/@vessla.223" target="_blank" class="admin-link" style="margin-top:15px; border-left-color: var(--orange);">QTRV 2: KenZ EDIT</a>
+        <div class="penalty-box" style="border-color: var(--orange);">• Đang cập nhật chế độ xử phạt...</div>
+
+        <div class="admin-link" style="margin-top:15px; border-left-color: #fff;">CHỦ NHÓM</div>
+        <div class="penalty-box">
+            • Kick: Đợi 3 ngày<br>
+            • Tái phạm nhiều lần: Ban vĩnh viễn 💀
+        </div>
+    </div>
+
+    <div class="no-exeption">⚠️ TUYỆT ĐỐI KHÔNG CÓ NGOẠI LỆ<br><span style="font-size: 12px; font-weight: normal;">(Bạn thân, người yêu, cốt... xử hết!)</span></div>
 
     <div class="card">
-        <div class="card-title">📜 PROTOCOLS / NỘI QUY</div>
-        <div class="rule-item"><b>01.</b> Cấm chửi tục (Cà khịa nhẹ 😏, gắt xử luôn)</div>
-        <div class="rule-item"><b>02.</b> Cấm Spam (Ảnh, Video, GIF, Tin nhắn)</div>
-        <div class="rule-item"><b>03.</b> Cấm công kích thành viên</div>
-        <div class="rule-item" style="opacity: 0.5; text-decoration: line-through;"><b>04.</b> Kick người ít nhắn tin khi nhóm đông</div>
-        <div class="rule-item"><b>05.</b> Cấm gửi nội dung bậy bạ</div>
-        <div class="rule-item"><b>06.</b> Không tự ý đổi tên nhóm</div>
-        <div class="rule-item"><b>07.</b> Không kéo mem sang nhóm khác</div>
-        <div class="rule-item" style="color: var(--primary);"><b>08.</b> Chỉ cho phép người đã Follow kênh D</div>
+        <div class="card-h">🤡 GỢI Ý & PHONG CÁCH</div>
+        <div class="list-item">✨ Cần người nói chuyện vui, meme xàm</div>
+        <div class="list-item">😈 Nhắn nhạt là bị QTRV "dí" tới công chuyện</div>
     </div>
 
-    <div class="life-system card">
-        <div>
-            <div style="font-weight: 800; font-size: 15px; color: var(--danger);">HỆ THỐNG 3 MẠNG</div>
-            <div style="font-size: 12px; color: #aaa;">Vi phạm = Trừ 1 mạng. Hết = Kick 😈</div>
-        </div>
-        <div style="font-size: 20px;">❤️‍🔥</div>
+    <div style="margin-top: 25px;">
+        <a href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank" class="btn btn-main">🛸 VÀO NHÓM KYRO | NEXA V1</a>
+        <a href="https://www.facebook.com/dbt.gaming.2025" target="_blank" class="btn btn-social">🔥 Facebook D Gaming</a>
+        <a href="https://zalo.me/0927791127" target="_blank" class="btn btn-social">💙 Zalo Hỗ Trợ</a>
+        <a href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank" class="btn btn-social">🎬 Video Thông Tin Nhóm</a>
+        <a href="https://snaptik.net" target="_blank" class="btn btn-social">⬇️ Tải Video Không Logo</a>
+        <a href="https://vt.tiktok.com/ZSHMNVCwh/" target="_blank" class="btn btn-social">🎥 Video Chi Tiết Nhóm</a>
+        <a href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank" class="btn btn-social" style="color: var(--cyan);">✨ Aura D Edit (CapCut Pro)</a>
     </div>
 
-    <div class="card">
-        <div class="card-title">🛡️ MODERATORS</div>
-        <div class="admin-box">
-            <a href="https://www.tiktok.com/@mahiru_layzer290" target="_blank" class="admin-btn" style="border-color: var(--danger);">『XIVI』 Minh Dang</a>
-            <a href="https://www.tiktok.com/@vessla.223" target="_blank" class="admin-btn" style="border-color: var(--primary);">KenZ EDIT</a>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-title">🤡 NHÓM PHONG CÁCH</div>
-        <p style="font-size: 13px; color: #ccc;">Nhóm cần người nói chuyện vui, meme xàm xàm càng tốt. <b>Nhắn nhạt là bị để ý nhé 😈</b></p>
-    </div>
-
-    <div class="card" style="border-color: var(--warning);">
-        <div class="card-title" style="color: var(--warning);">⚠️ IMPORTANT NOTES</div>
-        <p style="font-size: 13px;">Gặp vi phạm hãy <b>Chụp bằng chứng</b> và báo QTRV.</p>
-        <div class="special-note">
-            ⏳ <b>Bị Kick:</b> 3 ngày để quay lại<br>
-            ❤️ <b>Bị trừ mạng:</b> 3 ngày để hồi lại
-        </div>
-    </div>
-
-    <div class="btn-list">
-        <a href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank" class="btn btn-group">🛸 VÀO NHÓM KYRO | NEXA V1</a>
-        <a href="https://www.facebook.com/dbt.gaming.2025" target="_blank" class="btn btn-fb">🔥 Facebook Cá Nhân</a>
-        <a href="https://zalo.me/0927791127" target="_blank" class="btn btn-zalo">💙 Zalo Cá Nhân</a>
-        <a href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank" class="btn btn-video">🎬 Video Thông Tin Nhóm</a>
-        <a href="https://snaptik.net" target="_blank" class="btn btn-tool">⬇️ Tải Video Không Logo</a>
-        <a href="https://vt.tiktok.com/ZSHMNVCwh/" target="_blank" class="btn btn-video" style="background: #ff7a00;">🎥 Video Chi Tiết Nhóm</a>
-        <a href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank" class="btn btn-aura">✨ Aura D Edit (CapCut Pro)</a>
-    </div>
-
-    <div class="footer-note">
-        © 2026 D Gaming Dashboard<br>
-        Mở bằng trình duyệt để dùng đầy đủ chức năng
+    <div style="text-align: center; font-size: 11px; color: #444; margin-top: 40px;">
+        HỆ THỐNG ĐƯỢC TỐI ƯU BỞI D GAMING © 2026<br>
+        MỞ BẰNG TRÌNH DUYỆT ĐỂ ĐẠT HIỆU SUẤT TỐI ĐA
     </div>
 </div>
 
