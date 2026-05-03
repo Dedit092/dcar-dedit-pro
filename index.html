@@ -1,338 +1,210 @@
-export default function App() { return ( <> <style>{` * { box-sizing: border-box; }
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KYRO | NEXA</title>
 
-body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0f0f0f;
+  color:#fff;
+}
 
-    .container {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 24px;
-      text-align: center;
-    }
+.container{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  text-align:center;
+}
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
+h1{font-size:32px;margin-bottom:16px}
 
-    .intro {
-      margin-bottom: 20px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #1a1a1a;
-      max-width: 420px;
-      line-height: 1.6;
-      color: #ffffff;
-      font-weight: bold;
-    }
+.intro{
+  margin-bottom:20px;
+  padding:16px;
+  border-radius:14px;
+  background:#1a1a1a;
+  max-width:420px;
+  font-weight:bold;
+}
 
-    .rules {
-      color: #aaa;
-      margin-bottom: 24px;
-      line-height: 1.6;
-      max-width: 420px;
-    }
+.rules{
+  color:#aaa;
+  margin-bottom:24px;
+  line-height:1.6;
+  max-width:420px;
+}
 
-    .rule7 {
-      color: #ff4d4d;
-      font-weight: bold;
-    }
+.rule7{color:#ff4d4d;font-weight:bold}
+.rule8{color:#ffb84d;font-weight:bold}
+.rule4old{color:#ff4d4d;font-weight:bold}
 
-    .rule8 {
-      color: #ffb84d;
-      font-weight: bold;
-    }
+.life,.admin,.fun-note{
+  margin-top:12px;
+  padding:16px;
+  border-radius:14px;
+  max-width:420px;
+  font-weight:bold;
+}
 
-    .rule4old {
-      color: #ff4d4d;
-      font-style: italic;
-      font-weight: bold;
-    }
+.life{background:#141a2a;color:#9ecbff}
+.admin{background:#1a132a;color:#caa6ff}
+.fun-note{background:#2a1a00;color:#ffcc66}
 
-    .warning {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #2a1414;
-      color: #ffb3b3;
-      max-width: 420px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
+.btn{
+  display:block;
+  width:100%;
+  max-width:360px;
+  margin:10px 0;
+  padding:16px;
+  text-decoration:none;
+  border-radius:14px;
+  font-weight:bold;
+  color:#fff;
+  transition:.25s;
+}
 
-    .life {
-      margin-top: 12px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #141a2a;
-      color: #9ecbff;
-      max-width: 420px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
+.btn:hover{transform:scale(1.05);filter:brightness(1.2)}
 
-    .heal {
-      margin-top: 12px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #132a1a;
-      color: #9cffb0;
-      max-width: 420px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
+.btn1{background:#3b5998}
+.btn2{background:#0084ff}
+.btn3{background:#808080}
+.btn4{background:#ff0050}
+.btn5{background:#00c853}
+.btn6{background:#ff7a00}
+.btn7{background:#8e24aa}
 
-    .admin {
-      margin-top: 12px;
-      padding: 16px;
-      border-radius: 14px;
-      background: #1a132a;
-      color: #caa6ff;
-      max-width: 420px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
+.glow1{color:#ff4d4d;text-shadow:0 0 6px #ff4d4d}
+.glow2{color:#4da6ff;text-shadow:0 0 6px #4da6ff}
 
-    .fun-note {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      background: #2a1a00;
-      color: #ffcc66;
-      max-width: 420px;
-      line-height: 1.6;
-      font-weight: bold;
-    }
+.note{
+  margin-top:10px;
+  padding:14px;
+  border-radius:12px;
+  background:#1a0f0f;
+  color:#ffb3b3;
+  max-width:360px;
+  font-size:14px;
+}
 
-    .browser-note {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      background: #1c1c1c;
-      color: #ccc;
-      max-width: 420px;
-      font-size: 14px;
-    }
+.browser{
+  margin-top:12px;
+  padding:14px;
+  border-radius:12px;
+  background:#1c1c1c;
+  color:#ccc;
+  font-size:14px;
+}
+</style>
+</head>
 
-    .btn {
-      width: 100%;
-      max-width: 360px;
-      margin: 10px 0;
-      padding: 16px;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 14px;
-      font-weight: bold;
-      transition: 0.25s;
-    }
+<body>
 
-    .btn1 { background: #3b5998; }
-    .btn2 { background: #0084ff; }
-    .btn3 { background: #808080; }
-    .btn4 { background: #ff0050; }
-    .btn5 { background: #00c853; }
-    .btn6 { background: #ff7a00; }
-    .btn7 { background: #8e24aa; }
+<div class="container">
 
-    .btn:hover {
-      transform: scale(1.05);
-      filter: brightness(1.2);
-    }
+<div class="intro">
+Đây là nhóm trò chuyện vui vẻ 👽
+</div>
 
-    
+<h1>Luật Nhóm KYRO | NEXA</h1>
 
-    /* Leader glow styles */
-    .glow-vosxy {
-      color: #ff4d4d;
-      text-shadow: 0 0 6px #ff4d4d, 0 0 12px #ff0000;
-    }
+<div class="rules">
+• Luật 1: Cấm chửi tục (có thể cà khịa nhẹ 😏)<br>
+• Luật 2: Cấm spam<br>
+• Luật 3: Cấm xúc phạm<br>
 
-    .glow-kenz {
-      color: #4da6ff;
-      text-shadow: 0 0 6px #4da6ff, 0 0 12px #0066ff;
-    }
+<span class="rule4old">
+• Luật 4: (không còn hiệu lực)<br>
+👉 Nhóm đông sẽ kick người ít nhắn
+</span><br>
 
-    .glow-zenox {
-      color: #9cff66;
-      text-shadow: 0 0 6px #9cff66, 0 0 12px #33cc33;
-    }
-  `}</style>
+• Luật 5: Cấm nội dung bậy<br>
+• Luật 6: Không tự đổi tên nhóm<br>
 
-  <div className="container">
-    <div className="intro">
-      Đây là nhóm trò chuyện vui vẻ 👽
-    </div>
+<span class="rule7">
+• Luật 7: Cấm gửi link nhóm khác
+</span><br>
 
-    <h1>Luật Nhóm 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔</h1>
+<span class="rule8">
+• Luật 8: Phải follow kênh D mới được vào
+</span>
+</div>
 
-    <div className="rules">
-      • Luật 1: Cấm chửi tục dưới mọi hình thức (chữ, hình ảnh, GIF), kể cả viết tắt. Nhưng chửi vui, cà khịa nhẹ thì được 😏, chửi gắt là xử ngay.<br />
-      • Luật 2: Cấm spam hình ảnh, video, GIF hoặc spam quá nhiều trong một tin nhắn.<br />
-      • Luật 3: Cấm xúc phạm, công kích các thành viên trong nhóm.<br />
-      <span className="rule4old">• Luật 4: Không hoạt động lâu sẽ bị kick, có lý do chính đáng có thể vào lại. (không còn hiệu lực)<br />👉 Khi nhóm đông, sẽ ưu tiên kick người ít nhắn tin để thêm người mới.</span><br />
-      • Luật 5: Cấm gửi link bậy bạ, nội dung không phù hợp với người chưa đủ tuổi.<br />
-      • Luật 6: Cấm đổi tên nhóm. Mọi thay đổi phải hỏi ý kiến chủ nhóm.<br />
-      <span className="rule7">
-        • Luật 7: Không được gửi link nhóm khác trong nhóm. Muốn rủ thì nhắn riêng, cấm gửi trong nhóm.
-      </span><br />
-      <span className="rule8">
-        • Luật 8: ⚠️ Chỉ những người đã follow kênh D mới được vào Nhóm 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭
-      </span>
-    </div>
+<div class="life">
+❤️‍🔥 HỆ THỐNG 3 MẠNG<br>
+Hết mạng = KICK 😈
+</div>
 
-    
+<div class="admin">
+🛡️ QUẢN TRỊ VIÊN<br><br>
 
-    <div className="life">
-      ❤️‍🔥 <b>HỆ THỐNG 3 MẠNG</b><br />
-      Khi vào <b>𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭</b>, bạn có <b>3 mạng</b>.<br />
-      Vi phạm sẽ mất 1 mạng.<br />
-      Hết mạng = <b>kick</b> 😈
-    </div>
+<a class="glow1" href="https://www.tiktok.com/@mahiru_layzer290?_r=1&_t=ZS-95uzFvj3ocp" target="_blank">
+QTRV 1. 『XIVI』 Minh Dang
+</a><br>
 
-    
+<a class="glow2" href="https://www.tiktok.com/@vessla.223?_r=1&_t=ZS-95uzH5PcGgc" target="_blank">
+QTRV 2. KenZ EDIT
+</a>
 
-    <div className="admin">
-      🛡️ <b>QUẢN TRỊ VIÊN</b><br /><br />
+</div>
 
-      <a href="https://www.tiktok.com/@mahiru_layzer290?_r=1&_t=ZS-95uzFvj3ocp" target="_blank" rel="noreferrer" className="glow-vosxy">QTRV 1. 『XIVI』 Minh Dang</a><br />
-      <a href="https://www.tiktok.com/@vessla.223?_r=1&_t=ZS-95uzH5PcGgc" target="_blank" rel="noreferrer" className="glow-kenz">QTRV 2. KenZ EDIT</a>
-    </div>
+<div class="fun-note">
+🤡 Nhóm cần người nói chuyện vui<br>
+Nhắn nhạt = tới công chuyện 😈
+</div>
 
-    <div style={{
-      marginTop: "12px",
-      padding: "16px",
-      borderRadius: "14px",
-      background: "#111a11",
-      color: "#9cffb0",
-      maxWidth: "420px",
-      lineHeight: "1.6",
-      fontWeight: "bold"
-    }}>
-      👥 <b>THÀNH VIÊN</b><br />
-      Thành viên nhóm 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭 hiện tại có 20 thành viên, 2 QTRV và 1 chủ nhóm.<br />
-      👉 Tổng cộng: <b>23 người</b>
-    </div>
+<div class="note">
+⚠️ Chụp bằng chứng khi có người vi phạm<br>
+👉 QTRV phải hỏi chủ nhóm trước khi xử lý<br><br>
 
-    <div style={{
-      marginTop: "12px",
-      padding: "16px",
-      borderRadius: "14px",
-      background: "#2a1414",
-      color: "#ffb3b3",
-      maxWidth: "420px",
-      lineHeight: "1.6",
-      fontWeight: "bold"
-    }}>
-      ❌ <b>KHÔNG ĐƯỢC PHÊ DUYỆT</b><br />
-      Có tổng cộng <b>28 người</b> không được vào nhóm.<br />
-      👉 Lý do: Không tuân theo <b>Luật 8</b>
-    </div>
+⏳ Bị kick có 3 ngày quay lại<br>
+❤️ Mất tim có 3 ngày hồi
+</div>
 
-    <div className="fun-note">
-      🤡 Lưu ý nè mấy ní<br />
-      Nhóm cần người nói chuyện vui, meme xàm xàm.<br />
-      Không phải kiểu nhạt nhẽo lạnh lùng đâu nha.<br />
-      👉 Nhắn nhạt quá là tới công chuyện với QTRV liền 😈
-    </div>
+<div style="margin-top:10px;color:#aaa;font-size:14px">
+👉 Những nút dưới có thể bấm được
+</div>
 
-    <div style={{
-      marginTop: "12px",
-      padding: "16px",
-      borderRadius: "14px",
-      background: "#0d1f1f",
-      color: "#7df9ff",
-      maxWidth: "420px",
-      lineHeight: "1.6",
-      fontWeight: "bold"
-    }}>
-      
-    </div>
+<a class="btn btn1" href="https://www.facebook.com/dbt.gaming.2025" target="_blank">
+🔥 Facebook
+</a>
 
-    <div style={{marginTop:"10px",color:"#aaa",fontSize:"14px"}}>👉 Những nút ở dưới có thể thao tác được nhé</div>
+<a class="btn btn2" href="https://zalo.me/0927791127" target="_blank">
+💙 Zalo
+</a>
 
-    <a className="btn btn1" href="https://www.facebook.com/dbt.gaming.2025" target="_blank" rel="noreferrer">
-      🔥 Kết Bạn Facebook Với D
-    </a>
+<a class="btn btn3" href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank">
+🕷️ Vào Nhóm
+</a>
 
-    <a className="btn btn2" href="https://zalo.me/0927791127" target="_blank" rel="noreferrer">
-      💙 Kết Bạn Zalo Với D
-    </a>
+<a class="btn btn4" href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank">
+🎬 Video Info
+</a>
 
-    <a className="btn btn3" href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank" rel="noreferrer">
-      🕷️ 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭
-    </a>
+<a class="btn btn5" href="https://snaptik.net" target="_blank">
+⬇️ Tải Video
+</a>
 
-    <div style={{
-      marginTop: "8px",
-      padding: "12px",
-      borderRadius: "12px",
-      background: "#1a0f0f",
-      color: "#ffb3b3",
-      maxWidth: "360px",
-      lineHeight: "1.5",
-      fontSize: "14px"
-    }}>
-      ⚠️ Khi trò chuyện nếu gặp người phạm luật, hãy chụp hình làm bằng chứng và báo cho chủ nhóm hoặc QTRV để xử lý.<br />
-      👉 QTRV vẫn phải hỏi ý kiến chủ nhóm trước khi xử lý.<br /><br />⏳ Khi bị kick bạn có 3 ngày để vào lại nhóm.<br />❤️ Khi bị trừ tim bạn cũng có 3 ngày để hồi.
-    </div>
+<a class="btn btn6" href="https://vt.tiktok.com/ZSHMNVCwh/" target="_blank">
+🎥 Video Chi Tiết
+</a>
 
-    <div style={{
-      marginTop: "10px",
-      padding: "14px",
-      borderRadius: "12px",
-      background: "#1a132a",
-      color: "#e0ccff",
-      maxWidth: "360px",
-      lineHeight: "1.5",
-      fontSize: "14px",
-      fontWeight: "bold"
-    }}>
-      🛡️ <b>LƯU Ý XỬ PHẠT</b><br /><br />
+<a class="btn btn7" href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank">
+🎬 Aura D Edit
+</a>
 
-      👤 QTRV <span style={{color:'#ff4d4d', textShadow:'0 0 6px #ff4d4d, 0 0 12px #ff0000'}}>『XIVI』 Minh Dang</span>:<br />
-      Khi kick thành viên → phải đợi ⏳ <b>10 ngày</b> mới được vào lại.<br />
-      Bị kick <b>5 lần</b> → <b>kick vĩnh viễn</b>.<br /><br />
+<div class="browser">
+👉 Nhớ mở bằng trình duyệt để dùng đầy đủ
+</div>
 
-      👤 KenZ EDIT:<br />
-      (Đang cập nhật...)<br /><br />
+</div>
 
-      👑 Chủ nhóm:<br />
-      Khi kick thành viên → phải đợi ⏳ <b>3 ngày</b> để vào lại.<br />
-      Nếu bị kick nhiều lần → <b>kick vĩnh viễn</b>.<br /><br />
-
-      ⚠️ <b>QUAN TRỌNG</b><br />
-      Bất cứ ai phạm luật đều phải chịu hình phạt.<br />
-      Không có ngoại lệ (người yêu, cốt, bạn thân...).
-    </div>
-    </div>
-
-    <a className="btn btn4" href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank" rel="noreferrer">
-      🎬 Video Thông Tin Về 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭
-    </a>
-
-    <a className="btn btn5" href="https://snaptik.net/en#google_vignette" target="_blank" rel="noreferrer">
-      ⬇️ Tải Video Không Dính Logo TikTok
-    </a>
-
-    <a className="btn btn6" href="https://vt.tiktok.com/ZSHMNVCwh/" target="_blank" rel="noreferrer">
-      🎥 Video Chi Tiết Về 𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭
-    </a>
-
-    <a className="btn btn7" href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank" rel="noreferrer">
-      🎬 Video Hướng Dẫn Làm Aura 𝐃 𝐄𝐃𝐈𝐓 (CapCut Pro)
-    </a>
-
-    <div className="browser-note">
-      👉 Nhớ mở bằng trình duyệt để vào nhóm và sử dụng đầy đủ các nút nhé!
-    </div>
-  </div>
-</>
-
-); }
+</body>
+</html>
