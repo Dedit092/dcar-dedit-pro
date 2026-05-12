@@ -9,63 +9,69 @@
         :root { --cyan: #00f2ff; --red: #ff3131; --orange: #ff8c00; --dark: #08080a; --glass: rgba(255, 255, 255, 0.03); }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { background: var(--dark); color: #fff; font-family: 'Inter', sans-serif; background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px; display: flex; justify-content: center; }
-        .container { width: 100%; max-width: 480px; padding: 20px 15px; }
-        .logo { font-family: 'Oswald', sans-serif; font-size: 30px; color: var(--cyan); text-align: center; margin-bottom: 20px; }
-        .card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 15px; margin-bottom: 15px; }
-        .card-h { font-family: 'Oswald', sans-serif; font-size: 15px; color: var(--cyan); margin-bottom: 10px; border-bottom: 1px solid rgba(0,242,255,0.2); padding-bottom: 5px; }
-        .list-item { font-size: 13px; margin-bottom: 8px; color: #ddd; display: flex; gap: 8px; }
-        .btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 15px; border-radius: 12px; margin-bottom: 10px; text-decoration: none; color: #fff; font-weight: bold; font-size: 14px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
-        .btn-main { background: var(--cyan); color: #000; font-weight: 900; }
-        .blacklist { background: rgba(255, 49, 49, 0.15); border: 1px solid var(--red); color: #ffbaba; padding: 12px; border-radius: 12px; font-size: 13px; text-align: center; margin-bottom: 15px; }
-        .dream { background: rgba(255, 255, 255, 0.05); border: 1px dashed var(--cyan); padding: 12px; border-radius: 12px; text-align: center; font-size: 13px; margin-bottom: 15px; }
+        .container { width: 100%; max-width: 480px; padding: 30px 15px; }
+        header { text-align: center; margin-bottom: 30px; }
+        .logo { font-family: 'Oswald', sans-serif; font-size: 35px; letter-spacing: 2px; color: var(--cyan); text-shadow: 0 0 15px var(--cyan); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .stat-box { background: var(--glass); border: 1px solid var(--cyan); border-radius: 12px; padding: 10px; }
+        .stat-num { display: block; font-size: 18px; font-weight: 900; color: var(--cyan); }
+        .stat-label { font-size: 10px; text-transform: uppercase; opacity: 0.7; }
+        .card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; margin-bottom: 15px; }
+        .card-h { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--cyan); margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(0,242,255,0.2); padding-bottom: 5px; }
+        .list-item { font-size: 14px; margin-bottom: 10px; line-height: 1.6; color: #ddd; display: flex; gap: 8px; }
+        .list-item b { color: var(--cyan); }
+        .blacklist { background: rgba(255, 49, 49, 0.15); border: 1px solid var(--red); color: #ffbaba; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; font-size: 13px; }
+        .admin-link { display: block; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-decoration: none; color: #fff; font-weight: bold; font-size: 14px; margin-bottom: 10px; border-left: 4px solid var(--cyan); }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px; border-radius: 15px; margin-bottom: 12px; text-decoration: none; color: #fff; font-weight: 800; font-size: 14px; border: 1px solid rgba(255,255,255,0.1); }
+        .btn-main { background: var(--cyan); color: #000; box-shadow: 0 0 15px rgba(0,242,255,0.3); }
+        .btn-social { background: rgba(255,255,255,0.05); }
     </style>
 </head>
 <body>
-
 <div class="container">
-    <div class="logo">KYRO | NEXA - COMMAND CENTER</div>
+    <header>
+        <div class="logo">KYRO | NEXA</div>
+        <div class="stats-grid">
+            <div class="stat-box"><span class="stat-num">30</span><span class="stat-label">Thành viên</span></div>
+            <div class="stat-box"><span class="stat-num">00</span><span class="stat-label">QTRV</span></div>
+            <div class="stat-box" style="border-color: var(--orange);"><span class="stat-num" style="color:var(--orange)">01</span><span class="stat-label">Chủ nhóm</span></div>
+        </div>
+    </header>
 
-    <div class="blacklist">❌ 28 ĐỐI TƯỢNG BỊ TỪ CHỐI DUYỆT<br>(Lý do: Không làm đúng luật số 8)</div>
+    <div class="blacklist">❌ 28 người không được vào nhóm<br>(Lý do: Không làm đúng luật số 8)</div>
 
-    <div class="dream">
-        <p>Bạn có thể giúp tôi đạt ước mơ idol TikTok không 🥲?</p>
-        <p style="color: var(--cyan); font-weight: bold; margin-top:5px;">Follow và Tim cho tôi nhé! =)))</p>
+    <div class="card">
+        <div class="card-h">📜 NỘI QUY TỐI THƯỢNG</div>
+        <div class="list-item"><span>01.</span> <span>Cấm chửi tục (Cà khịa nhẹ 😏 OK, gắt là xử)</span></div>
+        <div class="list-item"><span>02.</span> <span>Cấm spam ảnh, video, GIF, tin nhắn</span></div>
+        <div class="list-item"><span>03.</span> <span>Cấm xúc phạm, công kích thành viên</span></div>
+        <div class="list-item"><span>04.</span> <b>Ít nhắn tin hoặc chỉ nhắn vài câu rồi off, thì sẽ bị kick (nhóm cần người nói nhiều)</b></div>
+        <div class="list-item"><span>05.</span> <span>Cấm link bậy bạ, nội dung không phù hợp</span></div>
+        <div class="list-item"><span>06.</span> <span>Không tự ý đổi tên nhóm</span></div>
+        <div class="list-item"><span>07.</span> <span>Cấm gửi link nhóm khác (Rủ thì nhắn riêng)</span></div>
+        <div class="list-item" style="color: var(--orange);"><span>08.</span> <b>BẮT BUỘC FOLLOW KÊNH D MỚI ĐƯỢC VÀO</b></div>
     </div>
 
     <div class="card">
         <div class="card-h">👑 CHỦ NHÓM</div>
-        <a href="https://www.tiktok.com/@dedit092" style="color: var(--orange); text-decoration: none; font-weight: bold;">• 𝐃 𝐄𝐃𝗜𝐓 (𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭)</a>
-    </div>
-
-    <div class="card">
-        <div class="card-h">📜 NỘI QUY TỐI THƯỢNG</div>
-        <div class="list-item">01. Cấm chửi tục (Cà khịa nhẹ OK, gắt là xử)</div>
-        <div class="list-item">02. Cấm spam ảnh, video, GIF, tin nhắn</div>
-        <div class="list-item">03. Cấm xúc phạm, công kích thành viên</div>
-        <div class="list-item">04. Không được tự ý rời nhóm</div>
-        <div class="list-item">05. Cấm link bậy bạ, nội dung không phù hợp</div>
-        <div class="list-item">06. Không tự ý đổi tên nhóm</div>
-        <div class="list-item">07. Cấm gửi link nhóm khác (Rủ thì nhắn riêng)</div>
-        <div class="list-item" style="color: var(--orange);">08. BẮT BUỘC FOLLOW KÊNH D MỚI ĐƯỢC VÀO</div>
-    </div>
-
-    <div class="card">
-        <div class="card-h">🛡️ DANH SÁCH QTRV CŨ</div>
-        <div class="list-item">1. 『XIVI』 Minh Dang (Lý do: Không làm đúng luật)</div>
-        <div class="list-item">2. KenZ EDIT (Lý do: Không làm đúng luật)</div>
-    </div>
-
-    <div style="margin-top: 20px;">
-        <a href="https://tiktok.me/group/ZSPVTx7ce/" class="btn btn-main">🛸 VÀO NHÓM KYRO | NEXA V1</a>
-        <a href="https://www.tiktok.com/@dedit092" class="btn">🎬 Kênh D EDIT chính thức</a>
-        <a href="https://m.me/dbt.102d" class="btn">💬 Message của D</a>
-        <a href="https://zalo.me/0927791127" class="btn">💙 Zalo hỗ trợ</a>
+        <a href="https://www.tiktok.com/@dedit092" target="_blank" class="admin-link" style="border-left-color: var(--orange);">𝐃 𝐄𝐃𝗜𝐓 (𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭)</a>
         
-        <div style="margin: 15px 0 10px 0; font-size: 12px; color: var(--cyan); text-align: center;">📽️ TUTORIALS BY D</div>
-        <a href="https://vt.tiktok.com/ZSuqBXax8/" class="btn" style="border-style: dashed;">🌀 Tutorial Shake nhẹ D EDIT</a>
-        <a href="https://vt.tiktok.com/ZSHHCQX2R/" class="btn" style="border-style: dashed;">✨ Tutorial Aura 1 D EDIT</a>
+        <div class="card-h" style="margin-top: 20px;">🛡️ QUẢN TRỊ VIÊN CŨ</div>
+        <div style="font-size: 13px; color: #888; margin-bottom: 10px;">• 『XIVI』 Minh Dang (Lý do: Không có gì để làm)</div>
+        <div style="font-size: 13px; color: #888;">• KenZ EDIT (Lý do: Không có gì để làm)</div>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <a href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank" class="btn btn-main">🛸 VÀO NHÓM KYRO | NEXA V1</a>
+        <a href="https://www.tiktok.com/@dedit092" target="_blank" class="btn btn-social">🎬 Kênh D EDIT chính thức</a>
+        <a href="https://m.me/dbt.102d" target="_blank" class="btn btn-social">💬 Message D</a>
+        <a href="https://zalo.me/0927791127" target="_blank" class="btn btn-social">💙 Zalo D</a>
+        
+        <div style="text-align: center; margin: 20px 0; color: var(--cyan); font-weight: bold; font-size: 12px;">📽️ TUTORIALS</div>
+        <a href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank" class="btn btn-social">🌀 Tutorial shake nhẹ 𝐃 𝐄𝐃𝗜𝐓</a>
+        <a href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank" class="btn btn-social">✨ Tutorial aura 1 𝐃 𝐄𝐃𝗜𝐓</a>
     </div>
 </div>
-
 </body>
-</html>
+    </html>
+            
