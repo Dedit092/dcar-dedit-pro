@@ -204,3 +204,209 @@
 </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYRO | NEXA - COMMAND CENTER</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --cyan: #00f2ff; 
+            --red: #ff3131; 
+            --orange: #ff8c00; 
+            --dark: #08080a; 
+            --glass: rgba(255, 255, 255, 0.03); 
+        }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+        body { 
+            background: var(--dark); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            background-image: linear-gradient(rgba(0, 242, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 242, 255, 0.03) 1px, transparent 1px); 
+            background-size: 30px 30px; 
+            display: flex; 
+            justify-content: center; 
+        }
+        .container { 
+            width: 100%; 
+            max-width: 480px; 
+            padding: 30px 15px; 
+        }
+        header { 
+            text-align: center; 
+            margin-bottom: 25px; 
+        }
+        .logo { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 35px; 
+            letter-spacing: 2px; 
+            color: var(--cyan); 
+            text-shadow: 0 0 15px var(--cyan); 
+        }
+        .card { 
+            background: var(--glass); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 20px; 
+            padding: 20px; 
+            margin-bottom: 15px; 
+        }
+        .card-h { 
+            font-family: 'Oswald', sans-serif; 
+            font-size: 16px; 
+            color: var(--cyan); 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            border-bottom: 1px solid rgba(0,242,255,0.2); 
+            padding-bottom: 5px; 
+        }
+        .list-item { 
+            font-size: 14px; 
+            margin-bottom: 10px; 
+            line-height: 1.6; 
+            color: #ddd; 
+            display: flex; 
+            gap: 8px; 
+        }
+        .list-item b { 
+            color: var(--cyan); 
+        }
+        .list-item.rule-alert {
+            color: var(--orange);
+        }
+        .blacklist { 
+            background: rgba(255, 49, 49, 0.15); 
+            border: 1px solid var(--red); 
+            color: #ffbaba; 
+            padding: 15px; 
+            border-radius: 12px; 
+            text-align: center; 
+            margin-bottom: 20px; 
+            font-size: 13px; 
+            line-height: 1.5;
+        }
+        .admin-link { 
+            display: block; 
+            background: rgba(255,255,255,0.05); 
+            padding: 12px; 
+            border-radius: 10px; 
+            text-decoration: none; 
+            color: #fff; 
+            font-weight: bold; 
+            font-size: 14px; 
+            margin-bottom: 10px; 
+            border-left: 4px solid var(--orange); 
+        }
+        .admin-old {
+            font-size: 13px; 
+            color: #888; 
+            margin-bottom: 10px;
+        }
+        .note-text {
+            font-size: 13px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        .note-text b {
+            color: var(--orange);
+        }
+        .btn { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 10px; 
+            width: 100%; 
+            padding: 16px; 
+            border-radius: 15px; 
+            margin-bottom: 12px; 
+            text-decoration: none; 
+            color: #fff; 
+            font-weight: 800; 
+            font-size: 14px; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: all 0.2s ease;
+        }
+        .btn:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+        .btn-main { 
+            background: var(--cyan); 
+            color: #000; 
+            box-shadow: 0 0 15px rgba(0,242,255,0.3); 
+        }
+        .btn-orange {
+            background: var(--orange);
+            color: #000;
+            box-shadow: 0 0 15px rgba(255,140,0,0.3);
+        }
+        .btn-social { 
+            background: rgba(255,255,255,0.05); 
+        }
+        .section-title {
+            text-align: center; 
+            margin: 20px 0; 
+            color: var(--cyan); 
+            font-weight: bold; 
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">KYRO | NEXA</div>
+    </header>
+
+    <div class="blacklist">❌ 32 người không được duyệt vào nhóm<br>(Lý do: Không làm đúng luật số 8)</div>
+
+    <div class="card">
+        <div class="card-h">📜 NỘI QUY TỐI THƯỢNG</div>
+        <div class="list-item"><span>01.</span> <span>Cấm chửi tục (Cà khịa nhẹ 😏 OK, gắt là xử)</span></div>
+        <div class="list-item"><span>02.</span> <span>Cấm spam ảnh, video, GIF, tin nhắn</span></div>
+        <div class="list-item"><span>03.</span> <span>Cấm xúc phạm, công kích thành viên</span></div>
+        <div class="list-item"><span>04.</span> <b>Ít nhắn tin hoặc chỉ nhắn vài câu rồi off, thì sẽ bị kick (nhóm cần người nói nhiều)</b></div>
+        <div class="list-item"><span>05.</span> <span>Cấm link bậy bạ, nội dung không phù hợp</span></div>
+        <div class="list-item"><span>06.</span> <span>Không tự ý đổi tên nhóm</span></div>
+        <div class="list-item"><span>07.</span> <span>Cấm gửi link nhóm khác (Rủ thì nhắn riêng)</span></div>
+        <div class="list-item rule-alert"><span>08.</span> <b>BẮT BUỘC FOLLOW KÊNH D MỚI ĐƯỢC VÀO</b></div>
+    </div>
+
+    <div class="card">
+        <div class="card-h">⚠️ LƯU Ý CHO NHÓM</div>
+        <div class="note-text">Nhóm <b>𝗙𝗙 | 𝗞𝗬𝗥𝗢 𝗩𝟭</b> là loại nhóm GAMING và trò chuyện, và vào nhóm này thì không được buôn bán acc, và những luật trên giống như <b>𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭</b>.</div>
+    </div>
+
+    <div class="card">
+        <div class="card-h">👑 CHỦ NHÓM</div>
+        <a href="https://www.tiktok.com/@dedit092" target="_blank" class="admin-link">𝐃 𝐄𝐃𝗜𝐓 (𝗞𝗬𝗥𝗢 | 𝗡𝗘𝗫𝗔 𝗩𝟭)</a>
+        
+        <div class="card-h" style="margin-top: 20px;">🛡️ QUẢN TRỊ VIÊN CŨ</div>
+        <div class="admin-old">• 『XIVI』 Minh Dang (Lý do: Không có gì để làm)</div>
+        <div class="admin-old" style="margin-bottom: 0;">• KenZ EDIT (Lý do: Không có gì để làm)</div>
+    </div>
+
+    <div style="margin-top: 25px;">
+        <a href="https://tiktok.me/group/ZSPVTx7ce/" target="_blank" class="btn btn-main">🛸 VÀO NHÓM KYRO | NEXA V1</a>
+        <a href="https://tiktok.me/group/ZSxU2UjqN/" target="_blank" class="btn btn-orange">🎮 VÀO NHÓM 𝗙𝗙 | 𝗞𝗬𝗥𝗢 𝗩𝟭</a>
+        <a href="https://www.tiktok.com/@dedit092" target="_blank" class="btn btn-social">🎬 Kênh D EDIT chính thức</a>
+        <a href="https://m.me/dbt.102d" target="_blank" class="btn btn-social">💬 Message D</a>
+        <a href="https://zalo.me/0927791127" target="_blank" class="btn btn-social">💙 Zalo D</a>
+        
+        <div class="section-title">📽️ TUTORIALS</div>
+        <a href="https://vt.tiktok.com/ZSuqBXax8/" target="_blank" class="btn btn-social">🌀 Tutorial shake nhẹ 𝐃 𝐄𝐃𝗜𝐓</a>
+        <a href="https://vt.tiktok.com/ZSHHCQX2R/" target="_blank" class="btn btn-social">✨ Tutorial aura 1 𝐃 𝐄𝐃𝗜𝐓</a>
+    </div>
+</div>
+</body>
+</html>
